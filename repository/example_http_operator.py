@@ -41,4 +41,3 @@ t2 = SimpleHttpOperator(
     )
 
 t1 >> t2
-example_http_operator.py
