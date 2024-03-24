@@ -53,4 +53,4 @@ t4 = PythonOperator(task_id='task_4',
                     dag=dag)
 
 t1 >> [t2, t3]
-[t2, t3] >> t4example_python_operator.py
+[t2, t3] >> example_python_operator.py
