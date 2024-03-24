@@ -3,7 +3,7 @@ from airflow import DAG
 from airflow.operators.bash_operator import BashOperator 
 
 default_args={
-	'owner': 'airflow',
+    'owner': 'airflow',
     'depends_on_past': False,
     'start_date': datetime(2023, 10, 10, 14, 0),
     'email': ['cjs@gmail.com'],
@@ -14,20 +14,20 @@ default_args={
 } 
 
 dag = DAG(
-	'${USER_IDENTITY}_tutorial_bash', #DAG_ID , 중복되지 않아야 한다.
+    'cjs_tutorial_bash', #DAG_ID , 중복되지 않아야 한다.
     default_args=default_args,
     description='My first tutorial bash DAG',
     schedule_interval= '* * * * *' 
 ) 
 
 t1 = BashOperator(
-	task_id='say_hello',
+    task_id='say_hello',
     bash_command='echo "hello world"',
     dag=dag 
 ) 
 
 t2 = BashOperator(
-	task_id='what_time',
+    task_id='what_time',
     bash_command='date',
     dag=dag 
 ) 
