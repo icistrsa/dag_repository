@@ -35,7 +35,7 @@ def choose_branch_from_podOperator(ti):
     
     return jsonData[0].get('res')
 
-with DAG(dag_id='branch_python_operator', default_args=default_args, schedule_interval=None) as dag:
+with DAG(dag_id='example_complex_dag.py', default_args=default_args, schedule_interval=None) as dag:
     start_dag = BashOperator(task_id='start', bash_command='echo start')
 
     branching = BranchPythonOperator(task_id='choose_branch', python_callable=choose_branch)
