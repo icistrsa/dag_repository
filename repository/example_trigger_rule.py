@@ -7,7 +7,7 @@ import pendulum
 
 with DAG(
     dag_id='dags_python_with_trigger_rule_eg1',
-    start_date=pendulum.datetime(2024,1,1,tz="UCT"),
+    start_date=pendulum.datetime(2024,1,1,tz="UTC"),
     schedule=None,
     catchup=False
 ) as dag:
