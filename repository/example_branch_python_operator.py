@@ -16,7 +16,7 @@ def choose_branch(**kwargs):
     print(f'chosen: {chosen}')
     return chosen
 
-with DAG(dag_id='branch_python_operator', default_args=default_args, schedule_interval=None) as dag:
+with DAG(dag_id='example_branch_python_operator', default_args=default_args, schedule_interval=None) as dag:
     start_dag = BashOperator(task_id='start', bash_command='echo start')
 
     branching = BranchPythonOperator(task_id='choose_branch', python_callable=choose_branch)

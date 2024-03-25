@@ -12,7 +12,7 @@ default_args = {
     'retry_delay': timedelta(minutes=5)
 }
 
-dag = DAG('sample_retry', default_args=default_args)
+dag = DAG('example_retry', default_args=default_args)
 
 def my_task():
   print('my_task@@@@')
