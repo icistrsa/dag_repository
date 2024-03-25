@@ -3,6 +3,7 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 import random
 from airflow.exceptions import AirflowSkipException, AirflowFailException
+from airflow.operators.bash import BashOperator
 
 default_args = {
     'owner': 'airflow',
@@ -43,6 +44,13 @@ def random_exception_task_2(**context):
 def func1():
     print("f")
 
+t2 = BashOperator(
+    task_id="t2",
+    bash_command="echo I get 6 retries and never wait long! && False",
+    retries=6,
+    max_retry_delay=timedelta(seconds=10),
+)
+
 test = PythonOperator(
     task_id='test',
     python_callable=func1,
@@ -67,4 +75,4 @@ task2 = PythonOperator(
     dag=dag
 )
 
-test >> task >> task2
+t2 >> test >> task >> task2
