@@ -24,9 +24,9 @@ dag = DAG('example_retry',
 def random_exception_task():
     context = get_current_context()
     val = random.choice(range(3))
-    print(f"val : {val}")
+    print("val : "+val)
     if val == 1:
-        raise AirflowFailException(f"Fail task {context['ti'].task_id}")
+        raise AirflowFailException("Fail task")
     raise Exception()
     
     # do something
