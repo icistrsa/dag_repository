@@ -9,6 +9,7 @@ seven_days_ago = datetime.combine(datetime.today() - timedelta(7),
 args = {
     'owner': 'airflow',
     'start_date': seven_days_ago,
+    'catchup': False,
 }
 
 dag = DAG(

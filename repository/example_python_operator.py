@@ -4,7 +4,7 @@ from airflow.operators.python_operator import PythonOperator
 import time
 from pprint import pprint
 
-args = {'owner': 'cjs','start_date': days_ago(n=1)}
+args = {'owner': 'cjs','start_date': days_ago(n=1),'catchup': False,}
 
 dag = DAG(dag_id='example_python_operator',
           default_args=args,

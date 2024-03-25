@@ -7,7 +7,8 @@ from airflow.operators.python import BranchPythonOperator
 
 default_args = {
     'start_date': datetime(2021, 7, 31),
-    'schedule_interval': '@daily'
+    'schedule_interval': '@daily',
+    'catchup': False
 }
 
 def choose_branch(**kwargs):
