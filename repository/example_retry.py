@@ -28,6 +28,16 @@ def random_exception_task():
         #raise Exception()
     
     # do something
+def func1():
+    print("f")
+    
+test = PythonOperator(
+    task_id='test',
+    python_callable=func1,
+    retries=5,
+    retry_delay=timedelta(minutes=3),
+    dag=dag
+)
 
 task = PythonOperator(
     task_id='sample_retry',
@@ -45,4 +55,4 @@ task2 = PythonOperator(
     dag=dag
 )
 
-task >> task2
+test >> task >> task2
