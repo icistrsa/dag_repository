@@ -23,14 +23,13 @@ dag = DAG('example_retry',
 def random_exception_task():
     val = random.choice(range(3))
     print("val : "+val)
-    if val == 1:
-        raise AirflowFailException("Fail task")
+    #if val == 1:
+    #    raise AirflowFailException("Fail task")
         #raise Exception()
-    
-    # do something
+
 def func1():
     print("f")
-    
+
 test = PythonOperator(
     task_id='test',
     python_callable=func1,
