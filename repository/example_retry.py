@@ -3,7 +3,6 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 import random
 from airflow.exceptions import AirflowSkipException, AirflowFailException
-from airflow.operators.python import get_current_context
 
 default_args = {
     'owner': 'airflow',
@@ -22,7 +21,6 @@ dag = DAG('example_retry',
     )
 
 def random_exception_task():
-    context = get_current_context()
     val = random.choice(range(3))
     print("val : "+val)
     if val == 1:
