@@ -18,7 +18,7 @@ default_args = {
 
 dag = DAG('example_retry',
     default_args=default_args,
-    catchUp=False
+    catchup=False
     )
 
 def random_exception_task():
