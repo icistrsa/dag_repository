@@ -20,21 +20,23 @@ dag = DAG('example_retry',
     catchup=False
     )
 
-def random_exception_task_1():
+def random_exception_task_1(**context):
     print("random_exception_task_1")
     val = random.choice([1,2,3])
     #val = random.choice(range(3))
     print("val : "+val)
     if val == 1:
+        context['task_instance'].xcom_push(key='failValue', value=val)
         #raise AirflowFailException("Fail task")
         raise Exception()
     
-def random_exception_task_2():
+def random_exception_task_2(**context):
     print("random_exception_task_2")
     val = random.choice([1,2,3])
     #val = random.choice(range(3))
     print("val : "+val)
     if val == 1:
+        context['task_instance'].xcom_push(key='failValue', value=val)
         #raise AirflowFailException("Fail task")
         raise Exception()
 
