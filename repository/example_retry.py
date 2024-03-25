@@ -27,7 +27,7 @@ def random_exception_task():
     print("val : "+val)
     if val == 1:
         raise AirflowFailException("Fail task")
-    raise Exception()
+        #raise Exception()
     
     # do something
 
