@@ -20,14 +20,23 @@ dag = DAG('example_retry',
     catchup=False
     )
 
-def random_exception_task():
-    print("radn")
+def random_exception_task_1():
+    print("random_exception_task_1")
     val = random.choice([1,2,3])
     #val = random.choice(range(3))
-    #print("val : "+val)
+    print("val : "+val)
     if val == 1:
-        raise AirflowFailException("Fail task")
-        #raise Exception()
+        #raise AirflowFailException("Fail task")
+        raise Exception()
+    
+def random_exception_task_2():
+    print("random_exception_task_2")
+    val = random.choice([1,2,3])
+    #val = random.choice(range(3))
+    print("val : "+val)
+    if val == 1:
+        #raise AirflowFailException("Fail task")
+        raise Exception()
 
 def func1():
     print("f")
@@ -42,7 +51,7 @@ test = PythonOperator(
 
 task = PythonOperator(
     task_id='sample_retry',
-    python_callable=random_exception_task,
+    python_callable=random_exception_task_1,
     retries=5,
     retry_delay=timedelta(minutes=3),
     dag=dag
@@ -50,7 +59,7 @@ task = PythonOperator(
 
 task2 = PythonOperator(
     task_id='sample_retry2',
-    python_callable=random_exception_task,
+    python_callable=random_exception_task_2,
     retries=5,
     retry_delay=timedelta(minutes=3),
     dag=dag
