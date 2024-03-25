@@ -7,7 +7,7 @@ from airflow.decorators import task_group
 from airflow.utils.task_group import TaskGroup
 
 with DAG(
-    dag_id="dags_python_with_task_group",
+    dag_id="example_task_group",
     start_date=pendulum.datetime(2023,8,1,tz="UTC"),
     catchup=False
 ) as dag:
