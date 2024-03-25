@@ -53,7 +53,7 @@ task = PythonOperator(
     task_id='sample_retry',
     python_callable=random_exception_task_1,
     retries=5,
-    retry_delay=timedelta(minutes=3),
+    retry_delay=timedelta(minutes=1),
     dag=dag
 )
 
@@ -61,7 +61,7 @@ task2 = PythonOperator(
     task_id='sample_retry2',
     python_callable=random_exception_task_2,
     retries=5,
-    retry_delay=timedelta(minutes=3),
+    retry_delay=timedelta(minutes=1),
     dag=dag
 )
 
