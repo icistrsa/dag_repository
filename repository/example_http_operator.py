@@ -17,7 +17,9 @@ default_args = {
     'catchup': False,
 }
 
-dag = DAG('example_http_operator', default_args=default_args)
+dag = DAG('example_http_operator',
+           default_args=default_args,
+           catchup=False)
 
 dag.doc_md = __doc__
 
