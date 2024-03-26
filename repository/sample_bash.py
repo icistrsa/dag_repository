@@ -10,15 +10,15 @@ default_args={
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 1,
-    'retry_delay': timedelta(minutes=1),
-    'catchup': False,
+    'retry_delay': timedelta(minutes=1)
 } 
 
 dag = DAG(
     'cjs_tutorial_bash', #DAG_ID , 중복되지 않아야 한다.
     default_args=default_args,
     description='My first tutorial bash DAG',
-    schedule_interval= '* * * * *' 
+    schedule_interval= '* * * * *' ,
+    catchup=False
 ) 
 
 t1 = BashOperator(
