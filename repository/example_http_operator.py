@@ -19,7 +19,8 @@ default_args = {
 
 dag = DAG('example_http_operator',
            default_args=default_args,
-           catchup=False)
+           catchup=False,
+           max_active_runs=3)
 
 dag.doc_md = __doc__
 
